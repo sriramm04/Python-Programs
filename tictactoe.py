@@ -1,5 +1,3 @@
-
-
 tic_tac_toe = """
 This is the tic tac toe board
 
@@ -22,13 +20,13 @@ RULES
 
 spot=[' ' for i in range(9)]
 
+global attempt
 attempt = 0
 
 def reset():
     global spot,index_list
     spot = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
     index_list = []
-    print("xdddfsd")
     board=""" """
 
     
@@ -73,6 +71,9 @@ def get_input(player_name):
              else:
                  print("please enter number between 1-9")
 
+
+
+global winner
 winner = 0
 
 def game_winner(player_1,player_2):
@@ -100,9 +101,10 @@ def game_winner(player_1,player_2):
         winner+=1
         print("Congratulations",player_2,"you won the game \nbetter luck next time",player_1)
     
+    
 def main():
     print("Welcome to TIC TAC TOE game!")
-    global player_1,player_2
+    global player_1,player_2,winner
     player_1 = input("player number one enter your name : ")
     player_2 = input("player number two enter your name : ")
     print("Thank you for joining\n"+player_1+"'s sign will be : X\n"+player_2+"'s sign will be : O") 
@@ -125,20 +127,27 @@ def main():
             count+=1
     if count == 9:
         print("the game is a tie")
-            
+    while True:
+        play_again = input("do you wanna play the game again type yes or no:").lower()
+        if play_again == "yes":
+            winner = 0
+            reset()
+            main()
+        elif play_again == "no":
+            print("Thank you for joining",player_1,"and",player_2)
+            break
+        else:
+            print("Please enter yes or no")
         
 main()
 
-while True:
-    play_again = input("do you wanna play the game again yes/no:").lower()
-    if play_again == "yes":
-        winner = 0
-        attempt+=1
-        reset()
-        main() 
-    else:
-        print("Thank you for joining",player_1,"and",player_2)
-        break
+
+        
+                
+            
+   
+         
+    
     
 
 
